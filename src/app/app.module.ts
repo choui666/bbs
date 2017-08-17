@@ -11,7 +11,12 @@ import { IndexPage } from '../pages/index/index';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ServiceProvider } from '../providers/service/service';
+import { HttpModule }    from '@angular/http';
+import { StoreModule } from '@ngrx/store';
+import {BBSReducers} from  "../providers/reducer"
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     MyApp,
@@ -23,7 +28,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    StoreModule.forRoot(BBSReducers),
+    HttpModule,
+    // Note that you must instrument after importing StoreModule
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +49,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ServiceProvider
   ]
 })
 export class AppModule {}
