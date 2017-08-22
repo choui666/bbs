@@ -8,10 +8,16 @@ export interface IndexState{
     id:string
 }
 
-export function BbsReeducer(state:IndexState[],action:Action){
+export class myAction implements Action{
+  readonly type = INDEX_SEARCH
+
+  constructor(public payload:IndexState[]){}
+}
+
+export function BbsReducer(state:IndexState[],action:myAction){
   switch (action.type){
     case INDEX_SEARCH:
-      //state = action.payload
+      state = action.payload
       return state;
     default:
       return state;

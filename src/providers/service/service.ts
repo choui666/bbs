@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Store} from "@ngrx/store";
-import {INDEX_SEARCH, IndexState} from "../reducer/BbsReducer";
+import {INDEX_SEARCH, IndexState,myAction} from "../reducer/BbsReducer";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -23,9 +23,9 @@ export class ServiceProvider {
        .subscribe(result=>{
          if(result.reset === '1000' && result.status === '0'){
              let data = result.sections;
-             this.store.dispatch({type:INDEX_SEARCH,payload:data})
+             this.store.dispatch(new myAction(data))
          }else{
-
+            alert(result.desc);
          }
        })
   }

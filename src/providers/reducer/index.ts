@@ -1,5 +1,7 @@
-import {BbsReeducer} from "./BbsReducer";
+import {BbsReducer} from "./BbsReducer";
+import {UserInfoReducer} from "./UserInfoReducer";
 
-export const BBSReducers = {
-  index:BbsReeducer
+export const MyReducers = {
+  index:BbsReducer,
+  userInfo:UserInfoReducer
 }

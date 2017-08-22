@@ -2,34 +2,28 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { IndexPage } from '../pages/index/index';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ServiceProvider } from '../providers/service/service';
+
+import { pages } from '../pages';
+import { myService } from '../providers/service';
+import {MyReducers} from  "../providers/reducer"
+
 import { HttpModule }    from '@angular/http';
 import { StoreModule } from '@ngrx/store';
-import {BBSReducers} from  "../providers/reducer"
-
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    IndexPage
+    ...pages
   ],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
-    StoreModule.forRoot(BBSReducers),
+    StoreModule.forRoot(MyReducers),
     HttpModule,
     // Note that you must instrument after importing StoreModule
     StoreDevtoolsModule.instrument({
@@ -39,18 +33,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    IndexPage,
-    TabsPage,
-
+    ...pages
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServiceProvider
+    ...myService
   ]
 })
 export class AppModule {}

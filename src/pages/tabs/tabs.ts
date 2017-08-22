@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+import { PostPage } from '../post/post';
 import {IndexPage} from '../index/index';
 
 @Component({
@@ -11,7 +11,7 @@ import {IndexPage} from '../index/index';
 export class TabsPage {
 
   tab1Root = IndexPage;
-  tab2Root = HomePage;
+  tab2Root = PostPage;
   tab3Root = AboutPage;
   tab4Root = ContactPage;
 

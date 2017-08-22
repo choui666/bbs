@@ -27,8 +27,8 @@ export class IndexPage {
   }
 
   ionViewDidLoad() {
-    this.service.getIndexData();
-    this.getIndexData();
+    this.service.getIndexData();//查询首页数据
+    this.getIndexData();//订阅查询数据
     console.log('ionViewDidLoad IndexPage');
   }
 
