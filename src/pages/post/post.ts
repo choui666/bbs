@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {ModalController, NavController} from 'ionic-angular';
 import {UserServiceProvider} from "../../providers/service/user.service";
 import {Loginfilter} from "../../providers/filter/Loginfilter";
 
@@ -8,8 +8,8 @@ import {Loginfilter} from "../../providers/filter/Loginfilter";
   templateUrl: 'post.html'
 })
 export class PostPage extends  Loginfilter{
-  constructor(public navCtrl: NavController,protected userService:UserServiceProvider) {
-    super(userService);
+  constructor(public navCtrl: NavController,protected userService:UserServiceProvider,protected modalCtrl:ModalController) {
+    super(userService,modalCtrl);
   }
 
 

@@ -5,6 +5,7 @@ import {Store} from "@ngrx/store";
 // import {Storage} from '@ionic/storage';
 import {myUserInfoAction, UserInfoState} from "../reducer/UserInfoReducer";
 import {Subscription} from "rxjs/Subscription";
+import {AppState} from "../reducer/index";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -12,9 +13,7 @@ import {Subscription} from "rxjs/Subscription";
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
-export interface UserState {
-  userInfo: UserInfoState;
-}
+
 
 @Injectable()
 export class UserServiceProvider implements OnDestroy {
@@ -22,7 +21,7 @@ export class UserServiceProvider implements OnDestroy {
   private _isLogin: boolean = false;
   private logedSubscription: Subscription;
 
-  constructor(private http: Http, private store: Store<UserState>) {//, private storage: Storage
+  constructor(private http: Http, private store: Store<AppState>) {//, private storage: Storage
     console.log('Hello UserServiceProvider Provider');
   }
 

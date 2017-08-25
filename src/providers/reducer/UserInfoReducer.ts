@@ -1,4 +1,5 @@
 import {Action} from "@ngrx/store";
+import {IndexState} from "./BbsReducer";
 
 export const USER_SEARCH = "user search";
 
@@ -34,3 +35,7 @@ export function UserInfoReducer(state:UserInfoState,action:myUserInfoAction){
       return state;
   }
 }
+
+
+
+

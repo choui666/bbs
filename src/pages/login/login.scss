@@ -1,0 +1,17 @@
+page-login {
+  [padding] {
+    background-color: #e3e6e1;
+    [ion-button] {
+      background-color: #ffffff;
+      color: black;
+      width: 95%;
+    }
+    a {
+      float: right;
+      margin-right: 7%;
+      margin-top: 1%;
+      text-decoration: none;
+      color: #858b96;
+    }
+  }
+}

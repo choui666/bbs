@@ -9,11 +9,14 @@ import { pages } from '../pages';
 import { myService } from '../providers/service';
 import {MyReducers} from  "../providers/reducer"
 
+
+
 import { HttpModule }    from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { IonicStorageModule } from '@ionic/storage';
+import {DirectivesModule} from "../directives/directives.module";
 @NgModule({
   declarations: [
     MyApp,
@@ -25,6 +28,7 @@ import { IonicStorageModule } from '@ionic/storage';
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(MyReducers),
     HttpModule,
+    DirectivesModule,
     // Note that you must instrument after importing StoreModule
     StoreDevtoolsModule.instrument({
       maxAge: 25
@@ -39,7 +43,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ...myService
+    ...myService,
   ]
 })
 export class AppModule {}

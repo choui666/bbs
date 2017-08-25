@@ -4,6 +4,7 @@ import {ServiceProvider} from "../../providers/service/service";
 import {Store} from "@ngrx/store";
 import {IndexState} from "../../providers/reducer/BbsReducer";
 import {Observable} from "rxjs/Observable";
+import {AppState} from "../../providers/reducer/index";
 
 /**
  * Generated class for the IndexPage page.
@@ -11,9 +12,7 @@ import {Observable} from "rxjs/Observable";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-interface AppState {
-  index: IndexState[];
-}
+
 
 @Component({
   selector: 'page-index',
