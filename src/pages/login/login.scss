@@ -2,9 +2,11 @@ page-login {
   [padding] {
     background-color: #e3e6e1;
     [ion-button] {
+      width: 95%;
+    }
+    .button-input {
       background-color: #ffffff;
       color: black;
-      width: 95%;
     }
     a {
       float: right;

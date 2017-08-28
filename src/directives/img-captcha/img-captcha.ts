@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Input, OnInit, Renderer} from '@angular/core';
+import {Directive, ElementRef, HostListener, OnInit} from '@angular/core';
 import {bathPath} from "../../app/environment";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../providers/reducer/index";

@@ -1,19 +1,19 @@
 import {UserServiceProvider} from "../service/user.service";
-import { ModalController } from 'ionic-angular';
+import {ModalController, NavController} from 'ionic-angular';
 import {LoginPage} from "../../pages/login/login";
 
-export abstract  class Loginfilter{
-  constructor(protected userService:UserServiceProvider,protected modalCtrl:ModalController){
+export abstract class Loginfilter {
+  constructor(protected userService: UserServiceProvider, protected modalCtrl: ModalController,protected navCtrl:NavController) {
 
   }
 
-  ionViewCanEnter():boolean{
-    if(this.userService.isLogin()){
-
-    } else{
-       this.modalCtrl.create(LoginPage).present();
+  ionViewWillEnter(): void {
+    if (!this.userService.isLogin()) {
+      let  loginModal =  this.modalCtrl.create(LoginPage);
+      loginModal.present();
+      loginModal.onDidDismiss(()=>{
+        this.navCtrl.parent.select(0);
+      })
     }
-
-    return true;
   }
 }

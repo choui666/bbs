@@ -16,7 +16,7 @@
 
 <ion-content padding>
    <ion-card *ngFor="let game of (games|async)">
-        <ion-item>
+        <ion-item (click)="gotoSection(game)">
           <ion-avatar item-start>
             <img [src]="game.icon">
           </ion-avatar>

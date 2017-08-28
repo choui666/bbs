@@ -4,6 +4,7 @@ import {IndexPage} from "./index/index";
 import {PostPage} from "./post/post";
 import {TabsPage} from  "./tabs/tabs";
 import {LoginPage} from "./login/login";
+import {SectionPage} from "./section/section";
 
 export const  pages = [
   TabsPage,
@@ -11,5 +12,6 @@ export const  pages = [
   IndexPage,
   ContactPage,
   AboutPage,
-  LoginPage
+  LoginPage,
+  SectionPage
 ];

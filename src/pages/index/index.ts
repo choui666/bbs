@@ -5,6 +5,7 @@ import {Store} from "@ngrx/store";
 import {IndexState} from "../../providers/reducer/BbsReducer";
 import {Observable} from "rxjs/Observable";
 import {AppState} from "../../providers/reducer/index";
+import {SectionPage} from "../section/section";
 
 /**
  * Generated class for the IndexPage page.
@@ -28,11 +29,14 @@ export class IndexPage {
   ionViewDidLoad() {
     this.service.getIndexData();//查询首页数据
     this.getIndexData();//订阅查询数据
-    console.log('ionViewDidLoad IndexPage');
   }
 
   getIndexData(){
     this.games = this.store.select('index');
+  }
+
+  gotoSection(game:IndexState){
+    this.navCtrl.push(SectionPage,{game})
   }
 
 }

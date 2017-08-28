@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Store} from "@ngrx/store";
 import {INDEX_SEARCH, IndexState,myAction} from "../reducer/BbsReducer";
+import {mySectionAction} from "../reducer/SectionReducer";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -28,5 +29,18 @@ export class ServiceProvider {
             alert(result.desc);
          }
        })
+  }
+
+  getSectionData(param:{sectionid:string}){//{sectionid}
+    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100120.htm',param)
+      .map(res=>res.json())
+      .subscribe(result=>{
+        if(result.reset === '1000' && result.status === '0'){
+          let data ={subSections: result.subSections,detailInfo:result.detailInfo};
+          this.store.dispatch(new mySectionAction(data))
+        }else{
+          alert(result.desc);
+        }
+      })
   }
 }
