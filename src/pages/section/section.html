@@ -15,9 +15,44 @@
 
 <ion-content padding>
   <ion-segment [(ngModel)]="icons" color="secondary">
-    <ion-segment-button [value]="section.id"  *ngFor="let section of data.subSections">
+    <ion-segment-button [value]="section.id"  *ngFor="let section of sectionData.subSections" (ionSelect)="select($event)">
               {{section.title+'-'+section.id}}
     </ion-segment-button>
   </ion-segment>
-{{icons}}
+
+
+
+  <ion-card class="subsection" *ngFor="let subsection of subsectionData.topics">
+    <ion-card-header>
+      {{subsection?.title}}
+    </ion-card-header>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon  name="person"></ion-icon>
+          <div> {{subsection?.createUserNickname}}</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          {{subsection?.createTime}}
+        </ion-note>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-right clear small>
+          <div>{{subsection?.replyNum}}</div>
+          <ion-icon  name="text"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+<!--  <ion-card *ngFor="let subsection of subsectionData.topics">
+    <ion-item >
+      <h3>{{game.title}}</h3>
+    </ion-item>
+  </ion-card>-->
+
 </ion-content>
+
+

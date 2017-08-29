@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {Store} from "@ngrx/store";
 import {INDEX_SEARCH, IndexState,myAction} from "../reducer/BbsReducer";
 import {mySectionAction} from "../reducer/SectionReducer";
+import {mySubSectionAction} from "../reducer/SubSectionReducer";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -38,6 +39,25 @@ export class ServiceProvider {
         if(result.reset === '1000' && result.status === '0'){
           let data ={subSections: result.subSections,detailInfo:result.detailInfo};
           this.store.dispatch(new mySectionAction(data))
+        }else{
+          alert(result.desc);
+        }
+      })
+  }
+
+
+  getSubSectionData(param:{
+    start:string,
+    sectionId:string,
+    subSectionId:string,
+    lastTime?:string
+      lastIds?:string,
+    }){//{sectionid}
+    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100112.htm',{params:param})
+      .map(res=>res.json())
+      .subscribe(result=>{
+        if(result.reset === '1000' && result.status === '0'){
+          this.store.dispatch(new mySubSectionAction(result))
         }else{
           alert(result.desc);
         }
