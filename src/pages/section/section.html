@@ -15,15 +15,9 @@
 
 <ion-content padding>
   <ion-segment [(ngModel)]="icons" color="secondary">
-    <ion-segment-button value="camera">
-      <ion-icon name="camera"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button value="bookmark">
-      <ion-icon name="bookmark"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button value="bookmark">
-      <ion-icon name="bookmark"></ion-icon>
+    <ion-segment-button [value]="section.id"  *ngFor="let section of data.subSections">
+              {{section.title+'-'+section.id}}
     </ion-segment-button>
   </ion-segment>
-
+{{icons}}
 </ion-content>

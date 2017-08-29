@@ -27,7 +27,10 @@ export class SectionPage {
 
   icons:string = 'camera';
 
-  data:SectionState;
+  data:SectionState = {
+    subSections:[],
+    detailInfo:{}
+  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private service:ServiceProvider,private store:Store<AppState>) {
 
@@ -37,7 +40,10 @@ export class SectionPage {
     this.game = this.navParams.get('game');
     this.service.getSectionData({sectionid:this.game.id});
     this.store.select('section').subscribe(res=>{
-      this.data = res;
+      if(res){
+        this.data = res;
+        this.icons = this.data.subSections[0].id
+      }
     })
   }
 

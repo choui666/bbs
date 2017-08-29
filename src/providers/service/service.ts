@@ -32,7 +32,7 @@ export class ServiceProvider {
   }
 
   getSectionData(param:{sectionid:string}){//{sectionid}
-    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100120.htm',param)
+    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100120.htm',{params:param})
       .map(res=>res.json())
       .subscribe(result=>{
         if(result.reset === '1000' && result.status === '0'){
