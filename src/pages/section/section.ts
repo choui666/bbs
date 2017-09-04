@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 import {IndexState} from "../../providers/reducer/BbsReducer";
 import {ServiceProvider} from "../../providers/service/service";
 import {SectionState} from "../../providers/reducer/SectionReducer";
@@ -62,11 +62,13 @@ export class SectionPage implements OnDestroy {
     });
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private service: ServiceProvider, private store: Store<AppState>) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,
+              private service: ServiceProvider, private store: Store<AppState>) {
 
   }
 
   ionViewDidLoad() {
+    this.viewCtrl.setBackButtonText('返回');
     this.game = this.navParams.get('game');
     this.service.getSectionData({sectionid: this.game.id});
     this.$section = this.store.select('section').subscribe(res => {

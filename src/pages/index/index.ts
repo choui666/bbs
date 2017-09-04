@@ -36,7 +36,7 @@ export class IndexPage {
   }
 
   gotoSection(game:IndexState){
-    this.navCtrl.push(SectionPage,{game})
+    this.navCtrl.push(SectionPage,{game},{direction:'返回'})
   }
 
 }
