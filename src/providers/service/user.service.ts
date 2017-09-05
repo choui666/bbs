@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import {myUserInfoAction, UserInfoState} from "../reducer/UserInfoReducer";
 import {Subscription} from "rxjs/Subscription";
 import {AppState} from "../reducer/index";
+import {bathPath} from "../../app/environment";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -26,7 +27,7 @@ export class UserServiceProvider implements OnDestroy {
   }
 
   getUserInfo() {
-    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100114.htm').map(res => res.json()).subscribe(result => {
+    this.http.get(bathPath+'bbsinterf/js/100114.htm').map(res => res.json()).subscribe(result => {
       const data: UserInfoState = {
         bbsrandom: result.bbsrandom,
         reset: result.reset,

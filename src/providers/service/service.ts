@@ -5,6 +5,7 @@ import {Store} from "@ngrx/store";
 import {INDEX_SEARCH, IndexState,myAction} from "../reducer/BbsReducer";
 import {mySectionAction} from "../reducer/SectionReducer";
 import {mySubSectionAction} from "../reducer/SubSectionReducer";
+import {bathPath} from "../../app/environment";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -20,7 +21,7 @@ export class ServiceProvider {
   }
 
   getIndexData(){
-     this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100118.htm')
+     this.http.get(bathPath+'/bbsinterf/js/100118.htm')
        .map(res=>res.json())
        .subscribe(result=>{
          if(result.reset === '1000' && result.status === '0'){
@@ -33,7 +34,7 @@ export class ServiceProvider {
   }
 
   getSectionData(param:{sectionid:string}){//{sectionid}
-    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100120.htm',{params:param})
+    this.http.get(bathPath+'bbsinterf/js/100120.htm',{params:param})
       .map(res=>res.json())
       .subscribe(result=>{
         if(result.reset === '1000' && result.status === '0'){
@@ -53,7 +54,7 @@ export class ServiceProvider {
     lastTime?:string
       lastIds?:string,
     }){//{sectionid}
-    this.http.get('http://bbsinterf.gamebean.net/bbsinterf/js/100112.htm',{params:param})
+    this.http.get(bathPath+'/bbsinterf/js/100112.htm',{params:param})
       .map(res=>res.json())
       .subscribe(result=>{
         if(result.reset === '1000' && result.status === '0'){
