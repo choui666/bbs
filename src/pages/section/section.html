@@ -5,31 +5,33 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="dark">
-    <ion-title>{{game.title}}</ion-title>
+    <ion-title text-justify>{{game.title}}</ion-title>
   </ion-navbar>
 
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="icons" color="primary">
+      <ion-segment-button [value]="section.id" *ngFor="let section of sectionData.subSections"
+                          (ionSelect)="select($event)">
+        {{section.title+'-'+section.id}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-segment [(ngModel)]="icons" color="primary">
-    <ion-segment-button [value]="section.id"  *ngFor="let section of sectionData.subSections" (ionSelect)="select($event)">
-              {{section.title+'-'+section.id}}
-    </ion-segment-button>
-  </ion-segment>
 
 
-
-  <ion-card class="subsection" *ngFor="let subsection of subsectionData.topics">
+  <ion-card class="subsection" *ngFor="let subsection of subsectionData.topics" (click)="gotoSubSection(subsection)">
     <ion-card-header>
+      <ion-badge *ngIf="subsection.isHavePic!=='0'" item-start color="danger">图片</ion-badge>
       {{subsection?.title}}
     </ion-card-header>
     <ion-row>
       <ion-col col-auto>
         <button ion-button icon-left clear small>
-          <ion-icon  name="person"></ion-icon>
+          <ion-icon name="person"></ion-icon>
           <div> {{subsection?.createUserNickname}}</div>
         </button>
       </ion-col>
@@ -41,17 +43,11 @@
       <ion-col col-auto>
         <button ion-button icon-right clear small>
           <div>{{subsection?.replyNum}}</div>
-          <ion-icon  name="text"></ion-icon>
+          <ion-icon name="text"></ion-icon>
         </button>
       </ion-col>
     </ion-row>
   </ion-card>
-
-<!--  <ion-card *ngFor="let subsection of subsectionData.topics">
-    <ion-item >
-      <h3>{{game.title}}</h3>
-    </ion-item>
-  </ion-card>-->
 
 </ion-content>
 

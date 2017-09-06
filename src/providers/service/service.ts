@@ -6,6 +6,7 @@ import {INDEX_SEARCH, IndexState,myAction} from "../reducer/BbsReducer";
 import {mySectionAction} from "../reducer/SectionReducer";
 import {mySubSectionAction} from "../reducer/SubSectionReducer";
 import {bathPath} from "../../app/environment";
+import {myTopicAction, TOPIC_SEARCH_LIST, TOPIC_SEARCH_ONE} from "../reducer/TopicReducer";
 
 /*
   Generated class for the ServiceProvider provider.
@@ -64,4 +65,36 @@ export class ServiceProvider {
         }
       })
   }
+
+  getSubSectionOne(param:{
+    topicId:string,
+   }){//{sectionid}
+    this.http.get(bathPath+'/bbsinterf/js/100137.htm',{params:param})
+      .map(res=>res.json())
+      .subscribe(result=>{
+        if(result.reset === '1000' && result.status === '0'){
+          this.store.dispatch(new myTopicAction(TOPIC_SEARCH_ONE,{'sectionInfo':result.sectionInfo,'topicInfo':null}))
+        }else{
+          alert(result.desc);
+        }
+      })
+  }
+
+  getTopicList(param:{
+    topicId:string,
+    start:number,
+    limit:number,
+    lastFloor:number
+  }){//{sectionid}
+    this.http.get(bathPath+'/bbsinterf/js/100125.htm',{params:param})
+      .map(res=>res.json())
+      .subscribe(result=>{
+        if(result.reset === '1000' && result.status === '0'){
+          this.store.dispatch(new myTopicAction(TOPIC_SEARCH_LIST,{'sectionInfo':null,'topicInfo':result}))
+        }else{
+          alert(result.desc);
+        }
+      })
+  }
+
 }

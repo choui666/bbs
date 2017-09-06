@@ -25,7 +25,9 @@ import {DirectivesModule} from "../directives/directives.module";
   imports: [
     BrowserModule,
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      backButtonText:''
+    }),
     StoreModule.forRoot(MyReducers),
     HttpModule,
     DirectivesModule,

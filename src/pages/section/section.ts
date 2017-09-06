@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {NavController, NavParams, ViewController} from 'ionic-angular';
+import {App, IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {IndexState} from "../../providers/reducer/BbsReducer";
 import {ServiceProvider} from "../../providers/service/service";
 import {SectionState} from "../../providers/reducer/SectionReducer";
@@ -14,7 +14,7 @@ import {SubSectionState} from "../../providers/reducer/SubSectionReducer";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-section',
   templateUrl: 'section.html',
@@ -62,13 +62,13 @@ export class SectionPage implements OnDestroy {
     });
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController,
-              private service: ServiceProvider, private store: Store<AppState>) {
+  constructor(  public navCtrl:NavController,public navParams: NavParams,private app:App,
+  private service: ServiceProvider, private store: Store<AppState>) {
 
   }
 
   ionViewDidLoad() {
-    this.viewCtrl.setBackButtonText('返回');
+
     this.game = this.navParams.get('game');
     this.service.getSectionData({sectionid: this.game.id});
     this.$section = this.store.select('section').subscribe(res => {
@@ -89,6 +89,12 @@ export class SectionPage implements OnDestroy {
 
   select(ev: any) {
     this.icons = ev.value;
+  }
+
+
+  gotoSubSection(subsection:any){
+     //this.app.getRootNav().push('TopicPage',{'topicId':subsection.id});
+     this.navCtrl.push('TopicPage',{'topicId':subsection.id});
   }
 
   ngOnDestroy() {

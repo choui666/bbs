@@ -13,5 +13,5 @@ export const  pages = [
   ContactPage,
   AboutPage,
   LoginPage,
-  SectionPage
+  SectionPage,
 ];
