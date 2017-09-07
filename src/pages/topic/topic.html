@@ -12,12 +12,80 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-           2112
+  <ion-card *ngFor="let topic of topicInfo?.mainReplyInfos;first as isFirst;index as i">
+
+    <ion-card-header *ngIf="isFirst">
+      {{topicInfo?.topicTitle}}
     </ion-card-header>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="topic.replyUserHeader">
+      </ion-avatar>
+      <h2><span>{{topic.replyUserNickname}}</span><i float-right>{{topic.floor}}楼</i></h2>
+      <p>{{topic.replyFormat}}</p>
+    </ion-item>
+
+    <ion-card-content [innerHtml]="topic.content">
+
+    </ion-card-content>
+
+    <ion-item text-center  *ngIf="isFirst">
+      <button ion-button icon-start outline round>
+        <ion-icon name="thumbs-up"></ion-icon>
+           {{topic.praiseNum}}
+      </button>
+    </ion-item>
+
+
+    <ion-item text-right *ngIf="!isFirst">
+      <a icon-start> <ion-icon name="thumbs-up"></ion-icon>{{topic.praiseNum}}</a>
+      <a icon-start> <ion-icon name="text"></ion-icon>{{topic.subReplyNum}}</a>
+    </ion-item>
+
+    <ion-item  *ngIf="!isFirst&&topic.replyInfos&&topic.replyInfos.length>0">
+      <ion-card>
+        <ion-card-content>
+          <ion-item *ngFor="let subtopic of topic.replyInfos">
+            <p>
+              {{subtopic.replyUserNickname}}
+              <i style="color: deepskyblue">{{subtopic.mainReplyId!==subtopic.repliedId?'回复':':'}}</i>
+              <span [innerHtml]="subtopic.content"></span>
+            </p>
+            <p text-end> {{subtopic.replyFormat}}</p>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
   </ion-card>
 
-  {{topicInfo|json}}
+  <!--<ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="//bbsimg.gamebean.com/bbsimg/user/201701/870c2e89de044acaacc4937bb1072ff1.jpg">
+      </ion-avatar>
+      <h2><span>Marty McFly</span><i float-right>1楼</i></h2>
+      <p>November 5, 1955</p>
+    </ion-item>
+    <ion-card-content>
+      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      <img src="//bbsimg.gamebean.com/bbsimg/topic/201708/bb2483786b674ca3af3695474986e2a1.gif">
+    </ion-card-content>
+    <ion-item text-right>
+        <a icon-start> <ion-icon name="star"></ion-icon>1</a>
+        <a icon-start> <ion-icon name="star"></ion-icon>1</a>
+     </ion-item>
+    <ion-item>
+      <ion-card>
+        <ion-card-content>
+            <ion-item>
+               <p>飞淡淡的羁绊：老司机带上我</p>
+               <p text-end>2017-02-14 19:11:37</p>
+            </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-card>-->
 
 </ion-content>
