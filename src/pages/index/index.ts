@@ -21,9 +21,10 @@ import {SectionPage} from "../section/section";
 })
 export class IndexPage {
 
-  games:Observable<IndexState[]>
+  games:Observable<IndexState[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private store:Store<AppState>,private service:ServiceProvider) {
+
   }
 
   ionViewDidLoad() {

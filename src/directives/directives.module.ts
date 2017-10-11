@@ -1,8 +1,16 @@
-import { NgModule } from '@angular/core';
-import { ImgCaptchaDirective } from './img-captcha/img-captcha';
+import {NgModule} from '@angular/core';
+import {ImgCaptchaDirective} from './img-captcha/img-captcha';
+import {LoginClickDirective} from './login-click/login-click';
 @NgModule({
-	declarations: [ImgCaptchaDirective],
-	imports: [],
-	exports: [ImgCaptchaDirective]
+    declarations: [
+        ImgCaptchaDirective,
+        LoginClickDirective
+    ],
+    imports: [],
+    exports: [
+        ImgCaptchaDirective,
+        LoginClickDirective
+    ]
 })
-export class DirectivesModule {}
+export class DirectivesModule {
+}

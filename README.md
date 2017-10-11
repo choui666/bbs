@@ -24,3 +24,6 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+# dependnce
+
+[ngx-infinite-scroll](https://github.com/orizens/ngx-infinite-scroll/blob/master/README.md): Inspired by ng-infinite-scroll directive for angular.

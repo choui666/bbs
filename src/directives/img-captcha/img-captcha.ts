@@ -14,7 +14,7 @@ import {AppState} from "../../providers/reducer/index";
 })
 export class ImgCaptchaDirective implements  OnInit{
 
- interFace = "/js/100102.htm?width=120&height=38";
+ interFace = "bbsinterf/js/100102.htm?width=120&height=38";
 
  bbstokenId:string;
 

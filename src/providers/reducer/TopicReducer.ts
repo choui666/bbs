@@ -2,6 +2,7 @@ import {Action} from "@ngrx/store";
 
 export const TOPIC_SEARCH_ONE = "subsection search one";
 export const TOPIC_SEARCH_LIST = "subsection search list";
+export const TOPIC_ADD_LIST = "subsection add list";
 
 export interface SectionInfo{
   sectionIcon:string
@@ -47,6 +48,10 @@ export function TopicReducer(state:TopicState={sectionInfo:null,topicInfo:null},
     case TOPIC_SEARCH_LIST:
       state.topicInfo = action.payload&&action.payload.topicInfo;
       return Object.assign({},state);
+    case TOPIC_ADD_LIST:
+        action.payload.topicInfo.mainReplyInfos = [...state.topicInfo.mainReplyInfos,...action.payload.topicInfo.mainReplyInfos];
+        state.topicInfo = action.payload&&action.payload.topicInfo;
+        return Object.assign({},state);
     default:
       return state;
   }

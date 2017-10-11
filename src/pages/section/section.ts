@@ -16,88 +16,89 @@ import {SubSectionState} from "../../providers/reducer/SubSectionReducer";
  */
 @IonicPage()
 @Component({
-  selector: 'page-section',
-  templateUrl: 'section.html',
+    selector: 'page-section',
+    templateUrl: 'section.html',
 })
 export class SectionPage implements OnDestroy {
 
-  game: IndexState = {
-    icon: '',
-    title: '',
-    id: ''
-  };
+    game: IndexState = {
+        icon: '',
+        title: '',
+        id: ''
+    };
 
 
-  _icons: string = 'camera'
+    _icons: string = 'camera'
 
-  sectionData: SectionState = {
-    subSections: [],
-    detailInfo: {}
-  };
+    sectionData: SectionState = {
+        subSections: [],
+        detailInfo: {}
+    };
 
-  subsectionData: SubSectionState = {
-    bbsrandom: "",
-    desc: "",
-    isLastPage: "",
-    lastIds: "",
-    lastTime: "",
-    reset: "",
-    status: "",
-    topics: []
-  };
+    subsectionData: SubSectionState = {
+        bbsrandom: "",
+        desc: "",
+        isLastPage: "",
+        lastIds: "",
+        lastTime: "",
+        reset: "",
+        status: "",
+        topics: []
+    };
 
-  $subsection: Subscription;
-  $section: Subscription;
+    $subsection: Subscription;
+    $section: Subscription;
 
-  get icons() {
-    return this._icons;
-  }
+    get icons() {
+        return this._icons;
+    }
 
-  set icons(value: string) {
-    this._icons = value;
-    this.service.getSubSectionData({
-      start: '0',
-      sectionId: this.game.id,
-      subSectionId: value
-    });
-  }
+    set icons(value: string) {
+        this._icons = value;
+        this.service.getSubSectionData({
+            start: '0',
+            sectionId: this.game.id,
+            subSectionId: value
+        });
+    }
 
-  constructor(  public navCtrl:NavController,public navParams: NavParams,private app:App,
-  private service: ServiceProvider, private store: Store<AppState>) {
-
-  }
-
-  ionViewDidLoad() {
-
-    this.game = this.navParams.get('game');
-    this.service.getSectionData({sectionid: this.game.id});
-    this.$section = this.store.select('section').subscribe(res => {
-      if (res) {
-        this.sectionData = res;
-        this.icons = this.sectionData.subSections[0].id
-      }
-    })
-    this.$subsection = this.store.select('subsection').subscribe(res2 => {
-      if(res2){
-        this.subsectionData = res2;
-      }
-
-    })
-
-    this.$section.add(this.$subsection);
-  }
-
-  select(ev: any) {
-    this.icons = ev.value;
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams, private app: App,
+                private service: ServiceProvider, private store: Store<AppState>) {
 
 
-  gotoSubSection(subsection:any){
-     //this.app.getRootNav().push('TopicPage',{'topicId':subsection.id});
-     this.navCtrl.push('TopicPage',{'topicId':subsection.id});
-  }
+    }
 
-  ngOnDestroy() {
-    this.$section.unsubscribe();
-  }
+    ionViewDidLoad() {
+
+        this.game = this.navParams.get('game');
+        this.service.getSectionData({sectionid: this.game.id});
+        this.$section = this.store.select('section').subscribe(res => {
+            if (res) {
+                this.sectionData = res;
+                this.icons = this.sectionData.subSections[0].id
+            }
+        })
+        this.$subsection = this.store.select('subsection').subscribe(res2 => {
+            if (res2) {
+                this.subsectionData = res2;
+            }
+
+        })
+
+        this.$section.add(this.$subsection);
+    }
+
+    select(ev: any) {
+        this.icons = ev.value;
+    }
+
+
+    gotoSubSection(subsection: any) {
+        //this.app.getRootNav().push('TopicPage',{'topicId':subsection.id});
+        this.navCtrl.push('TopicPage', {'topicId': subsection.id});
+    }
+
+    ngOnDestroy() {
+        this.$section.unsubscribe();
+    }
 }

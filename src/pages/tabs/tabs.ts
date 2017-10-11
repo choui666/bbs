@@ -4,6 +4,7 @@ import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { PostPage } from '../post/post';
 import {IndexPage} from '../index/index';
+import {IonicPage} from "ionic-angular";
 
 @Component({
   templateUrl: 'tabs.html'
