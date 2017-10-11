@@ -1,29 +1,10 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+这是一个ionic+angular4+ngrx编写的论坛项目，阅读官网资料字节写的 [ionic demo](http://ionicframework.com/docs/) projects.
 
-## How to use this template
+## 怎么使用
+  1 clone该项目到本地
+  2 cmd命令 npm  run start（需要修改本地host文件，后台接口使用了cores跨域）
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myTabs tabs
-```
-
-Then, to run it, cd into `myTabs` and run:
-
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
-# dependnce
+# 依赖
 
 [ngx-infinite-scroll](https://github.com/orizens/ngx-infinite-scroll/blob/master/README.md): Inspired by ng-infinite-scroll directive for angular.
